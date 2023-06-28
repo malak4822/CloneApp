@@ -42,6 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return level.toStringAsFixed(1);
   }
 
+  Future<bool> hideAfter() async {
+    Future.delayed(const Duration(milliseconds: 700));
+    bool visible = !canChooseLvl;
+    return visible;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,32 +81,40 @@ class _MyHomePageState extends State<MyHomePage> {
             }),
             const Spacer(),
             button(
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Visibility(
-                      visible: !canChooseLvl,
-                      child: Text('UDOSTĘPNIJ SWÓJ STAN UPOJENIA',
-                          style: aTxtStyle)),
-                  Visibility(
-                      visible: canChooseLvl,
-                      child: Slider(
-                        value: lvl,
-                        onChanged: (newValue) {
-                          setState(() {
-                            lvl = newValue;
-                          });
-                        },
-                        activeColor: Colors.white,
-                        inactiveColor: Colors.white.withOpacity(0.5),
-                      )),
-                  Visibility(
-                      visible: canChooseLvl,
+                Column(children: [
+                  AnimatedOpacity(
+                      duration: const Duration(milliseconds: 700),
+                      opacity: !canChooseLvl ? 1 : 0,
+                      child: FutureBuilder(
+                          future: hideAfter(),
+                          builder: (context, snapshot) => Text(
+                              'UDOSTĘPNIJ SWÓJ STAN UPOJENIA',
+                              style: aTxtStyle))),
+                  AnimatedOpacity(
+                      opacity: canChooseLvl ? 1 : 0,
+                      duration: const Duration(milliseconds: 700),
+                      child: Visibility(
+                          visible: canChooseLvl,
+                          child: Slider(
+                            value: lvl,
+                            onChanged: (newValue) {
+                              setState(() {
+                                lvl = newValue;
+                              });
+                            },
+                            activeColor: Colors.white,
+                            inactiveColor: Colors.white.withOpacity(0.5),
+                          ))),
+                  AnimatedOpacity(
+                      opacity: canChooseLvl ? 1 : 0,
+                      duration: const Duration(milliseconds: 700),
                       child: Expanded(
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                             Text(
-                              "'Upodliłem się ${shortenedLvl()}/10'",
-                              style: TextStyle(color: Colors.white),
+                              "Upodliłem się ${shortenedLvl()}/10",
+                              style: const TextStyle(color: Colors.white),
                             ),
                             IconButton(
                                 onPressed: () async {
