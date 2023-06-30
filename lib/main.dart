@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kacapp/functions.dart';
-import 'package:kacapp/mywidgets.dart';
+import 'package:kacapp/widgets.dart';
+import 'package:kacapp/provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -12,15 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Kac App',
-        home: ChangeNotifierProvider(
-          create: (context) => MyWidgets(),
-          child: Consumer<MyWidgets>(builder: (context, stateProvider, _) {
-            return const MyHomePage(title: ' Kac App');
-          }),
-        ));
+    return ChangeNotifierProvider(
+        create: (context) => MyFunctions(),
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Kac App',
+            home: ChangeNotifierProvider(
+                create: (context) => MyFunctions(),
+                child: const MyHomePage(title: ' Kac App'))));
   }
 }
 
@@ -32,7 +31,6 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextStyle aTxtStyle =
@@ -69,19 +67,19 @@ class _MyHomePageState extends State<MyHomePage> {
           const Spacer(),
           MyWidgets().button(
               Text('ZNAJDŹ PIJĄCEGO W POBLIŻU', style: aTxtStyle),
-              () => Functions().firstButton(),
+              () => MyFunctions().firstButton(),
               context),
           const Spacer(),
           MyWidgets().button(Text('ZAMÓW KARETKE', style: aTxtStyle),
-              () => Functions().secondButton(), context),
+              () => MyFunctions().secondButton(), context),
           const Spacer(),
           MyWidgets().button(
-              MyWidgets().thirdButtonWidget(lvl, shortenedLvl),
-              () => Functions().thirdButton(),
+              MyWidgets().thirdButtonWidget(shortenedLvl, context),
+              () => MyFunctions().thirdButton(),
               context),
           const Spacer(),
           MyWidgets().button(Text('ZAMÓW KLINA ON-LINE', style: aTxtStyle),
-              () => Functions().fourthButton(), context),
+              () => MyFunctions().fourthButton(), context),
           const Spacer(),
         ]),
       ),
