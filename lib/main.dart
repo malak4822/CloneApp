@@ -32,16 +32,9 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+const TextStyle aTxtStyle = TextStyle(color: Colors.white, fontSize: 16);
+
 class _MyHomePageState extends State<MyHomePage> {
-  final TextStyle aTxtStyle =
-      const TextStyle(color: Colors.white, fontSize: 16);
-  double lvl = 0.5;
-
-  String shortenedLvl() {
-    double level = lvl * 10;
-    return level.toStringAsFixed(1);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,20 +59,36 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(children: [
           const Spacer(),
           MyWidgets().button(
-              Text('ZNAJDŹ PIJĄCEGO W POBLIŻU', style: aTxtStyle),
-              () => MyFunctions().firstButton(),
+              const Text('ZNAJDŹ PIJĄCEGO W POBLIŻU', style: aTxtStyle),
+              context.read<MyFunctions>().firstButton,
               context),
+          // Button(
+          //   function: context.read<MyFunctions>().firstButton,
+          //   widget: const Text('ZNAJDŹ PIJĄCEGO W POBLIŻU', style: aTxtStyle),
+          // ),
           const Spacer(),
-          MyWidgets().button(Text('ZAMÓW KARETKE', style: aTxtStyle),
-              () => MyFunctions().secondButton(), context),
+          MyWidgets().button(const Text('ZAMÓW KARETKE', style: aTxtStyle),
+              context.read<MyFunctions>().secondButton, context),
+          // Button(
+          //   function: context.read<MyFunctions>().secondButton,
+          //   widget: const Text('ZAMÓW KARETKE', style: aTxtStyle),
+          // ),
+          const Spacer(),
+          MyWidgets().button(MyWidgets().thirdButtonWidget(context),
+              context.read<MyFunctions>().thirdButton, context),
+          // Button(
+          //   function: context.read<MyFunctions>().thirdButton,
+          //   widget: const ThirdButtonWidget(),
+          // ),
           const Spacer(),
           MyWidgets().button(
-              MyWidgets().thirdButtonWidget(shortenedLvl, context),
-              () => MyFunctions().thirdButton(),
+              const Text('ZAMÓW KLINA ON-LINE', style: aTxtStyle),
+              context.read<MyFunctions>().fourthButton,
               context),
-          const Spacer(),
-          MyWidgets().button(Text('ZAMÓW KLINA ON-LINE', style: aTxtStyle),
-              () => MyFunctions().fourthButton(), context),
+          // Button(
+          //   function: context.read<MyFunctions>().fourthButton,
+          //   widget: const Text('ZAMÓW KLINA ON-LINE', style: aTxtStyle),
+          // ),
           const Spacer(),
         ]),
       ),
