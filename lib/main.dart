@@ -58,37 +58,24 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(children: [
           const Spacer(),
-          MyWidgets().button(
-              const Text('ZNAJDŹ PIJĄCEGO W POBLIŻU', style: aTxtStyle),
-              context.read<MyFunctions>().firstButton,
-              context),
-          // Button(
-          //   function: context.read<MyFunctions>().firstButton,
-          //   widget: const Text('ZNAJDŹ PIJĄCEGO W POBLIŻU', style: aTxtStyle),
-          // ),
+          Button(
+            function: context.read<MyFunctions>().firstButton,
+            widget: const FirstButtonWidget(),
+          ),
           const Spacer(),
-          MyWidgets().button(const Text('ZAMÓW KARETKE', style: aTxtStyle),
-              context.read<MyFunctions>().secondButton, context),
-          // Button(
-          //   function: context.read<MyFunctions>().secondButton,
-          //   widget: const Text('ZAMÓW KARETKE', style: aTxtStyle),
-          // ),
+          Button(
+            function: context.read<MyFunctions>().secondButton,
+            widget: const Text('ZAMÓW KARETKE', style: aTxtStyle),
+          ),
           const Spacer(),
-          MyWidgets().button(MyWidgets().thirdButtonWidget(context),
-              context.read<MyFunctions>().thirdButton, context),
-          // Button(
-          //   function: context.read<MyFunctions>().thirdButton,
-          //   widget: const ThirdButtonWidget(),
-          // ),
+          Button(
+            function: context.read<MyFunctions>().thirdButton,
+            widget: const ThirdButtonWidget(),
+          ),
           const Spacer(),
-          MyWidgets().button(
-              const Text('ZAMÓW KLINA ON-LINE', style: aTxtStyle),
-              context.read<MyFunctions>().fourthButton,
-              context),
-          // Button(
-          //   function: context.read<MyFunctions>().fourthButton,
-          //   widget: const Text('ZAMÓW KLINA ON-LINE', style: aTxtStyle),
-          // ),
+          Button(
+              function: context.read<MyFunctions>().fourthButton,
+              widget: const FourthButtonWidget()),
           const Spacer(),
         ]),
       ),
