@@ -31,6 +31,9 @@ class FirstButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isSearchingForGuy =
         Provider.of<MyFunctions>(context).isSearchingForGuy;
+    bool hasSearchedGuy = Provider.of<MyFunctions>(context).hasSearchedGuy;
+
+    print(isSearchingForGuy);
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       AnimatedSize(
         duration: const Duration(milliseconds: 300),

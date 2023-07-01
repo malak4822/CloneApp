@@ -8,12 +8,16 @@ class MyFunctions extends ChangeNotifier {
   bool _isSearchingForGuy = false;
   bool get isSearchingForGuy => _isSearchingForGuy;
 
+  bool _hasSearchedGuy = false;
+  bool get hasSearchedGuy => _hasSearchedGuy;
+
   Future firstButton() async {
     if (_isSearchingForGuy == true) {
       _isSearchingForGuy == false;
       notifyListeners();
     } else {
       _isSearchingForGuy = true;
+      await Future.delayed(const Duration(seconds: 2));
       notifyListeners();
     }
   }
