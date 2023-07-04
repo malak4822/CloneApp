@@ -4,8 +4,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:math';
 
 class MyFunctions extends ChangeNotifier {
-  // FIRST BUTTON | FIRST BUTTON | FIRST BUTTON | FIRST BUTTON
-
   // SECOND BUTTON | SECOND BUTTON | SECOND BUTTON | SECOND BUTTON
   final _url = Uri(scheme: 'tel', path: '999');
 
