@@ -3,6 +3,8 @@ import 'package:kacapp/widgets.dart';
 import 'package:kacapp/provider.dart';
 import 'package:provider/provider.dart';
 
+const TextStyle aTxtStyle = TextStyle(color: Colors.white, fontSize: 16);
+
 void main() {
   runApp(const MyApp());
 }
@@ -35,8 +37,6 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
-const TextStyle aTxtStyle = TextStyle(color: Colors.white, fontSize: 16);
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
