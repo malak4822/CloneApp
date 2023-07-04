@@ -26,37 +26,45 @@ class Button extends StatelessWidget {
 }
 
 class FirstButtonWidget extends StatelessWidget {
-  const FirstButtonWidget({super.key});
+  const FirstButtonWidget({Key? key});
+
   @override
   Widget build(BuildContext context) {
-    bool isSearchingForGuy =
-        Provider.of<MyFunctions>(context).isSearchingForGuy;
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      AnimatedSize(
-        duration: const Duration(milliseconds: 300),
-        child: SizedBox(
-          width: isSearchingForGuy == false ? null : 0,
-          height: isSearchingForGuy == false ? null : 0,
-          child: const Text('ZNAJDŹ PIJĄCEGO W POBLIŻU',
-              style: aTxtStyle, textAlign: TextAlign.center),
+    final myFunc = Provider.of<FirstButtonNotfier>(context);
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AnimatedSize(
+          duration: const Duration(milliseconds: 300),
+          child: SizedBox(
+            width: myFunc.isSearchingForGuy ? 0 : null,
+            height: myFunc.isSearchingForGuy ? 0 : null,
+            child: const Text(
+              'ZNAJDŹ PIJĄCEGO W POBLIŻU',
+              style: aTxtStyle,
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
-      ),
-      if (isSearchingForGuy == true)
-        FutureBuilder(
+        if (myFunc.isSearchingForGuy)
+          FutureBuilder(
             future: Future.delayed(const Duration(seconds: 2)),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator(color: Colors.white);
               } else if (snapshot.connectionState == ConnectionState.done) {
                 return Text(
-                  'ZNALEZIONO PIJĄCEGO ${Provider.of<MyFunctions>(context).getRandNumber()}M. OD CIEBIĘ',
+                  'ZNALEZIONO PIJĄCEGO ${myFunc.getRandNumber()}M. OD CIEBIĘ',
                   style: aTxtStyle,
                   textAlign: TextAlign.center,
                 );
               }
-              throw ();
-            })
-    ]);
+              return const SizedBox(); 
+            },
+          ),
+      ],
+    );
   }
 }
 
@@ -74,7 +82,7 @@ class ThirdButtonWidget extends StatelessWidget {
         AnimatedSize(
           duration: const Duration(milliseconds: 300),
           child: SizedBox(
-            height: !canChooseLvl ? 16 : 0,
+            height: !myFunctions.canChooseLvl ? 16 : 0,
             child: const Text(
               'UDOSTĘPNIJ SWÓJ STAN UPOJENIA',
               style: TextStyle(color: Colors.white),
@@ -129,13 +137,15 @@ class FourthButtonWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AnimatedContainer(
+        AnimatedSize(
+            curve: Curves.ease,
             duration: const Duration(milliseconds: 300),
             child: SizedBox(
                 height: !areAvailable ? null : 0,
                 width: !areAvailable ? null : 0,
                 child: const Text('ZAMÓW KLINA ON-LINE', style: aTxtStyle))),
-        AnimatedContainer(
+        AnimatedSize(
+            curve: Curves.ease,
             duration: const Duration(milliseconds: 300),
             child: SizedBox(
                 height: areAvailable ? null : 0,

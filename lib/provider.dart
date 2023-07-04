@@ -5,42 +5,6 @@ import 'dart:math';
 
 class MyFunctions extends ChangeNotifier {
   // FIRST BUTTON | FIRST BUTTON | FIRST BUTTON | FIRST BUTTON
-  bool _isSearchingForGuy = false;
-  bool get isSearchingForGuy => _isSearchingForGuy;
-
-  Future firstButton() async {
-    if (_isSearchingForGuy == true) {
-      _isSearchingForGuy == false;
-      notifyListeners();
-    } else {
-      _isSearchingForGuy = true;
-      notifyListeners();
-    }
-  }
-
-  int getRandNumber() {
-    // for (int i = 0; i < 100; ++i) {
-    //   Random().nextInt(i * 20) - (i * 10) + firstGeneratedNumber;
-    // }
-
-    ++timesClicked;
-    if (timesClicked == 0) {
-      firstGeneratedNumber = Random().nextInt(800) + 800;
-      return firstGeneratedNumber;
-    } else if (timesClicked == 1) {
-      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
-          firstGeneratedNumber;
-    } else if (timesClicked == 2) {
-      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
-          firstGeneratedNumber;
-    } else if (timesClicked == 3) {
-      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
-          firstGeneratedNumber;
-    } else {
-      timesClicked = -1;
-      return Random().nextInt(1200) + 150;
-    }
-  }
 
   // SECOND BUTTON | SECOND BUTTON | SECOND BUTTON | SECOND BUTTON
   final _url = Uri(scheme: 'tel', path: '999');
@@ -50,9 +14,6 @@ class MyFunctions extends ChangeNotifier {
       await launchUrl(_url);
     }
   }
-
-  int timesClicked = -1;
-  late int firstGeneratedNumber;
 
   // THIRD BUTTON | THIRD BUTTON | THIRD BUTTON | THIRD BUTTON
 
@@ -87,6 +48,45 @@ class MyFunctions extends ChangeNotifier {
   bool get areAvailable => _areAvailable;
   void fourthButton() {
     _areAvailable = !areAvailable;
+    notifyListeners();
+  }
+}
+
+class FirstButtonNotfier extends ChangeNotifier {
+  int timesClicked = -1;
+  late int firstGeneratedNumber;
+  int getRandNumber() {
+    // for (int i = 0; i < 100; ++i) {
+    //   Random().nextInt(i * 20) - (i * 10) + firstGeneratedNumber;
+    // }
+
+    ++timesClicked;
+    if (timesClicked == 0) {
+      firstGeneratedNumber = Random().nextInt(800) + 800;
+      return firstGeneratedNumber;
+    } else if (timesClicked == 1) {
+      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
+          firstGeneratedNumber;
+    } else if (timesClicked == 2) {
+      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
+          firstGeneratedNumber;
+    } else if (timesClicked == 3) {
+      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
+          firstGeneratedNumber;
+    } else {
+      timesClicked = -1;
+      return Random().nextInt(1200) + 150;
+    }
+  }
+
+  bool _isSearchingForGuy = false;
+  bool get isSearchingForGuy => _isSearchingForGuy;
+  void firstButton() {
+    if (_isSearchingForGuy == true) {
+      _isSearchingForGuy == false;
+    } else {
+      _isSearchingForGuy = true;
+    }
     notifyListeners();
   }
 }

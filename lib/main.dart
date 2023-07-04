@@ -12,8 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => MyFunctions(),
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<MyFunctions>(create: (_) => MyFunctions()),
+          ChangeNotifierProvider<FirstButtonNotfier>(
+              create: (_) => FirstButtonNotfier()),
+        ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Kac App',
@@ -59,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(children: [
           const Spacer(),
           Button(
-            function: context.read<MyFunctions>().firstButton,
+            function: context.read<FirstButtonNotfier>().firstButton,
             widget: const FirstButtonWidget(),
           ),
           const Spacer(),
