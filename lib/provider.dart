@@ -5,49 +5,6 @@ import 'dart:math';
 
 class MyFunctions extends ChangeNotifier {
   // FIRST BUTTON | FIRST BUTTON | FIRST BUTTON | FIRST BUTTON
-<<<<<<< HEAD
-=======
-  bool _isSearchingForGuy = false;
-  bool get isSearchingForGuy => _isSearchingForGuy;
-
-  bool _hasSearchedGuy = false;
-  bool get hasSearchedGuy => _hasSearchedGuy;
-
-  Future firstButton() async {
-    if (_isSearchingForGuy == true) {
-      _isSearchingForGuy == false;
-      notifyListeners();
-    } else {
-      _isSearchingForGuy = true;
-      await Future.delayed(const Duration(seconds: 2));
-      notifyListeners();
-    }
-  }
-
-  int getRandNumber() {
-    // for (int i = 0; i < 100; ++i) {
-    //   Random().nextInt(i * 20) - (i * 10) + firstGeneratedNumber;
-    // }
-
-    ++timesClicked;
-    if (timesClicked == 0) {
-      firstGeneratedNumber = Random().nextInt(800) + 800;
-      return firstGeneratedNumber;
-    } else if (timesClicked == 1) {
-      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
-          firstGeneratedNumber;
-    } else if (timesClicked == 2) {
-      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
-          firstGeneratedNumber;
-    } else if (timesClicked == 3) {
-      return (Random().nextInt(timesClicked * 20) - (timesClicked * 10)) +
-          firstGeneratedNumber;
-    } else {
-      timesClicked = -1;
-      return Random().nextInt(1200) + 150;
-    }
-  }
->>>>>>> 79a00fd1fc722ebf26fad3a1ef4baa1604a40f3d
 
   // SECOND BUTTON | SECOND BUTTON | SECOND BUTTON | SECOND BUTTON
   final _url = Uri(scheme: 'tel', path: '999');
