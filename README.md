@@ -1,4 +1,4 @@
-# Kacapp
+# Kac App
 
 ## App Goal
 The Kacapp is a fun application cloned from a concept seen in the music video ‘Błąd’ by Łona and Webber. While it’s designed with features to help alleviate hangover symptoms, its primary purpose is for amusement and learning. Enjoy using the app! A fun fact is that when I was releasing the app on Google Play, I noticed that someone had the exact same idea and had created a similar application which has over a thousand downloads.
