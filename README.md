@@ -1,7 +1,7 @@
 # <img src='https://play-lh.googleusercontent.com/42FrHN3A5sZWWMbX3M5FaMxgdp6vYJ_APbuIub5I98WgB_kRYa7mIw__QHXIr6bjgNM=w240-h480-rw' width='32'>  Clone App
 
 ## Description
-"The Kacapp is a fun Flutter application cloned from a concept seen in the music video ‘Błąd’ by Łona and Webber. Its primary purpose is for amusement and learning. A fun fact is that when I was releasing the app on Google Play, I noticed that someone had the exact same idea and had created a similar application which has over a thousand downloads.
+The Clone App is a fun Flutter application cloned from a concept seen in the music video ‘Błąd’ by Łona and Webber. Its primary purpose is for amusement and learning. A fun fact is that when I was releasing the app on Google Play, I noticed that someone had the exact same idea and had created a similar application which has over a thousand downloads.
 
 ## Links
 ### <img src='https://cdn-icons-png.flaticon.com/512/732/732208.png' width='24'> [Clone App](https://play.google.com/store/apps/details?id=com.malak.kacapp&hl=en&gl=US)
